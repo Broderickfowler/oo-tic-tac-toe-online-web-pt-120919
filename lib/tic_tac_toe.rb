@@ -90,7 +90,13 @@ def won?
     end
   }
   return false
-end
+  
+   WIN_COMBINATIONS.any? {|win_combo| 
+  if position_taken?(win_combo[0]) && @board[win_combo[0]] == @board[win_combo[1]] && @board[win_combo[1]] == @board[win_combo[2]]
+    return win_combo
+  end 
+  }
+ end
 
 def full?
   @board.all? {|index| index == "X" || index == "O"}
